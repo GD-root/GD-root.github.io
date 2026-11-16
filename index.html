@@ -51,16 +51,41 @@ h1{font-family:var(--display);font-weight:600;font-size:32px;line-height:1.15;ma
 .selos{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin:16px 0 0;padding:0;list-style:none}
 .selos li{font-size:13.5px;font-weight:600;padding:5px 11px;border-radius:999px;background:var(--card);border:1px solid var(--line)}
 
-.app{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;margin:0 0 16px;border-top:5px solid var(--cor)}
-.app.praesto{--cor:var(--rubrica)}
-.app.veritas{--cor:var(--vinho)}
-.topo{display:flex;gap:14px;align-items:center}
-.topo img{width:64px;height:64px;border-radius:16px;flex:none;box-shadow:0 1px 3px rgba(0,0,0,.15)}
-.app h2{font-family:var(--display);font-weight:600;font-size:24px;line-height:1.15;margin:0}
+/* Quadrados dos apps */
+.apps{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0;padding:0;list-style:none}
+.praesto{--cor:var(--rubrica)}
+.veritas{--cor:var(--vinho)}
+.tile{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;width:100%;height:100%;
+  padding:18px 10px 16px;border-radius:20px;border:1px solid var(--line);border-top:4px solid var(--cor);background:var(--card);
+  color:var(--ink);font:inherit;cursor:pointer;transition:transform .15s ease, box-shadow .15s ease}
+.tile:hover{box-shadow:0 4px 14px rgba(0,0,0,.08)}
+.tile:active{transform:scale(.98)}
+.tile:focus-visible{outline:3px solid var(--ouro);outline-offset:2px}
+.tile img{width:64px;height:64px;border-radius:16px;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.tile b{font-family:var(--display);font-weight:600;font-size:18.5px;line-height:1.15}
+.tile small{font-size:13.5px;color:var(--muted);line-height:1.3}
+.tile .mais{position:absolute;top:8px;right:8px;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:var(--suave);color:var(--cor);font-size:19px;font-weight:700;line-height:1}
+
+/* Balão com os detalhes */
+dialog.balao{width:min(520px,calc(100% - 24px));max-height:calc(100% - 32px);padding:0;border:0;border-radius:22px;
+  background:var(--card);color:var(--ink);box-shadow:0 18px 50px rgba(0,0,0,.3);overflow:auto;border-top:5px solid var(--cor)}
+dialog.balao::backdrop{background:rgba(20,12,10,.55);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+dialog.balao[open]{animation:surge .18s ease-out}
+@keyframes surge{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){dialog.balao[open]{animation:none}}
+.balao .dentro{padding:20px}
+.topo{display:flex;gap:14px;align-items:center;padding-right:36px}
+.topo img{width:60px;height:60px;border-radius:15px;flex:none;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.balao h2{font-family:var(--display);font-weight:600;font-size:23px;line-height:1.15;margin:0}
 .para{font-size:14.5px;color:var(--muted);margin:2px 0 0}
-.app ul{margin:14px 0 16px;padding:0;list-style:none}
-.app li{position:relative;padding-left:22px;margin:7px 0;font-size:16px}
-.app li::before{content:"";position:absolute;left:4px;top:.6em;width:7px;height:7px;border-radius:50%;background:var(--cor)}
+.balao ul{margin:14px 0 16px;padding:0;list-style:none}
+.balao li{position:relative;padding-left:22px;margin:7px 0;font-size:16px}
+.balao li::before{content:"";position:absolute;left:4px;top:.6em;width:7px;height:7px;border-radius:50%;background:var(--cor)}
+.fechar{position:absolute;top:12px;right:12px;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--card);
+  color:var(--muted);font-size:24px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.fechar:focus-visible{outline:3px solid var(--ouro);outline-offset:2px}
+body.travado{overflow:hidden}
 
 .btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:50px;padding:12px 16px;border-radius:14px;
   font:inherit;font-weight:700;font-size:17px;text-decoration:none;cursor:pointer;border:1px solid var(--line);background:var(--card);color:var(--ink)}
@@ -104,9 +129,25 @@ footer .ref{margin:2px 0 12px}
   </header>
 
   <main>
-    <section class="app praesto" aria-labelledby="t-praesto">
-      <div class="topo">
+    <ul class="apps" aria-label="Aplicativos">
+      <li class="praesto"><button type="button" class="tile" data-abrir="b-praesto" aria-haspopup="dialog">
+        <span class="mais" aria-hidden="true">+</span>
         <img src="praesto-sum.png" alt="" width="64" height="64">
+        <b>Praesto Sum</b><small>Para quem serve ao altar</small>
+      </button></li>
+      <li class="veritas"><button type="button" class="tile" data-abrir="b-veritas" aria-haspopup="dialog">
+        <span class="mais" aria-hidden="true">+</span>
+        <img src="veritas.png" alt="" width="64" height="64">
+        <b>Veritas in Caritate</b><small>Para explicar a fé</small>
+      </button></li>
+    </ul>
+  </main>
+
+  <dialog class="balao praesto" id="b-praesto" aria-labelledby="t-praesto">
+    <button type="button" class="fechar" data-fechar aria-label="Fechar">×</button>
+    <div class="dentro">
+      <div class="topo">
+        <img src="praesto-sum.png" alt="" width="60" height="60">
         <div><h2 id="t-praesto">Praesto Sum</h2><p class="para">Para acólitos, coroinhas e quem prepara a Santa Missa</p></div>
       </div>
       <ul>
@@ -116,7 +157,7 @@ footer .ref{margin:2px 0 12px}
         <li>A procissão de entrada montada com a sua equipe</li>
         <li>A Instrução Geral do Missal Romano (IGMR), número por número</li>
       </ul>
-      <a class="btn pri" href="https://gd-root.github.io/praesto-summ/">Abrir o Praesto Sum
+      <a class="btn pri" href="https://gd-root.github.io/praesto-summ/">Acessar o Praesto Sum
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
       <details class="instalar">
         <summary>Como instalar no celular</summary>
@@ -126,11 +167,14 @@ footer .ref{margin:2px 0 12px}
           <p>Abra uma vez com internet. Depois ele funciona até sem sinal, na sacristia.</p>
         </div>
       </details>
-    </section>
+    </div>
+  </dialog>
 
-    <section class="app veritas" aria-labelledby="t-veritas">
+  <dialog class="balao veritas" id="b-veritas" aria-labelledby="t-veritas">
+    <button type="button" class="fechar" data-fechar aria-label="Fechar">×</button>
+    <div class="dentro">
       <div class="topo">
-        <img src="veritas.png" alt="" width="64" height="64">
+        <img src="veritas.png" alt="" width="60" height="60">
         <div><h2 id="t-veritas">Veritas in Caritate</h2><p class="para">A verdade na caridade: apologética católica</p></div>
       </div>
       <ul>
@@ -139,7 +183,7 @@ footer .ref{margin:2px 0 12px}
         <li>Maria, a Igreja, os sacramentos, os santos e as cinco solas</li>
         <li>Dicas para conversar com respeito, mesmo com quem discorda</li>
       </ul>
-      <a class="btn pri" href="https://gd-root.github.io/Veritas-in-Caritate/">Abrir o Veritas in Caritate
+      <a class="btn pri" href="https://gd-root.github.io/Veritas-in-Caritate/">Acessar o Veritas in Caritate
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
       <details class="instalar">
         <summary>Como instalar no celular</summary>
@@ -149,8 +193,8 @@ footer .ref{margin:2px 0 12px}
           <p>Abra uma vez com internet. Depois ele funciona até sem sinal.</p>
         </div>
       </details>
-    </section>
-  </main>
+    </div>
+  </dialog>
 
   <section class="partilhar" aria-labelledby="t-partilhar">
     <h2 id="t-partilhar">Conhece alguém que vai gostar?</h2>
@@ -174,6 +218,34 @@ footer .ref{margin:2px 0 12px}
 </div>
 
 <script>
+  /* Balões dos apps: abrem por cima da página; fecham no ×, tocando fora ou com o "voltar" do celular */
+  var aberto = null;
+  function abrir(id, empilhar) {
+    var d = document.getElementById(id);
+    if (!d || !d.showModal) return;
+    d.querySelectorAll("details").forEach(function (x) { x.open = false; });
+    d.showModal(); aberto = d; document.body.classList.add("travado");
+    if (empilhar) history.pushState({ balao: id }, "", "#" + id.replace("b-", ""));
+  }
+  document.querySelectorAll("[data-abrir]").forEach(function (b) {
+    b.addEventListener("click", function () { abrir(b.getAttribute("data-abrir"), true); });
+  });
+  document.querySelectorAll("dialog.balao").forEach(function (d) {
+    d.addEventListener("click", function (e) {
+      if (e.target === d || e.target.closest("[data-fechar]")) d.close(); /* toque fora do balão ou no × */
+    });
+    d.addEventListener("close", function () {
+      aberto = null; document.body.classList.remove("travado");
+      if (history.state && history.state.balao === d.id) history.back(); /* tira o #app do endereço */
+      var b = document.querySelector('[data-abrir="' + d.id + '"]'); if (b) b.focus();
+    });
+  });
+  /* "voltar" do celular fecha o balão */
+  window.addEventListener("popstate", function () { if (aberto) aberto.close(); });
+  /* link direto: gd-root.github.io/#praesto ou #veritas abre o balão do app */
+  var h = location.hash.replace("#", "");
+  if (h === "praesto" || h === "veritas") abrir("b-" + h, false);
+
   /* Copiar o link; no celular, usa o menu de compartilhar do próprio aparelho quando houver */
   var LINK = "https://gd-root.github.io/";
   var aviso = document.getElementById("copiado");
