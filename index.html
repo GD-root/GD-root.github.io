@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apps católicos gratuitos · GD</title>
+<meta name="description" content="Praesto Sum, para quem serve ao altar, e Veritas in Caritate, para explicar a fé com caridade. Gratuitos, sem cadastro e funcionam sem internet.">
+<meta name="theme-color" content="#6B1F2E">
+<link rel="icon" href="praesto-sum.png" type="image/png">
+
+<!-- Cartão que aparece quando o link é enviado no WhatsApp, Instagram e outras redes -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://gd-root.github.io/">
+<meta property="og:title" content="Apps católicos gratuitos">
+<meta property="og:description" content="Praesto Sum, para quem serve ao altar. Veritas in Caritate, para explicar a fé com caridade. Gratuitos, sem cadastro e funcionam sem internet.">
+<meta property="og:image" content="https://gd-root.github.io/compartilhar.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,500;0,600;1,500&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F8F3EC; --card:#FFFFFF; --ink:#2A1B1C; --muted:#6E5F5C; --line:#E2D6CB;
+  --vinho:#6B1F2E; --rubrica:#A3211B; --ouro:#8A6A1F; --suave:#F3E4E2;
+  --display:"Spectral", Georgia, "Times New Roman", serif;
+  --body:"Source Sans 3", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#17110F; --card:#221917; --ink:#F1E9E4; --muted:#B3A49D; --line:#3A2D29;
+    --vinho:#E58A97; --rubrica:#F07A6F; --ouro:#D9B45C; --suave:#33211F;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#17110F; --card:#221917; --ink:#F1E9E4; --muted:#B3A49D; --line:#3A2D29;
+  --vinho:#E58A97; --rubrica:#F07A6F; --ouro:#D9B45C; --suave:#33211F;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.5 var(--body)}
+.wrap{max-width:560px;margin:0 auto;padding:36px 16px 40px}
+
+header{text-align:center;margin-bottom:26px}
+.cruz{width:44px;height:44px;color:var(--ouro);margin:0 auto 10px;display:block}
+.eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ouro)}
+h1{font-family:var(--display);font-weight:600;font-size:32px;line-height:1.15;margin:6px 0 10px}
+.lede{color:var(--muted);margin:0 auto;max-width:30em}
+.selos{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin:16px 0 0;padding:0;list-style:none}
+.selos li{font-size:13.5px;font-weight:600;padding:5px 11px;border-radius:999px;background:var(--card);border:1px solid var(--line)}
+
+.app{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;margin:0 0 16px;border-top:5px solid var(--cor)}
+.app.praesto{--cor:var(--rubrica)}
+.app.veritas{--cor:var(--vinho)}
+.topo{display:flex;gap:14px;align-items:center}
+.topo img{width:64px;height:64px;border-radius:16px;flex:none;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.app h2{font-family:var(--display);font-weight:600;font-size:24px;line-height:1.15;margin:0}
+.para{font-size:14.5px;color:var(--muted);margin:2px 0 0}
+.app ul{margin:14px 0 16px;padding:0;list-style:none}
+.app li{position:relative;padding-left:22px;margin:7px 0;font-size:16px}
+.app li::before{content:"";position:absolute;left:4px;top:.6em;width:7px;height:7px;border-radius:50%;background:var(--cor)}
+
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:50px;padding:12px 16px;border-radius:14px;
+  font:inherit;font-weight:700;font-size:17px;text-decoration:none;cursor:pointer;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+.btn.pri{background:var(--cor);border-color:var(--cor);color:#fff}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .btn.pri{color:#1b1210}}
+:root[data-theme="dark"] .btn.pri{color:#1b1210}
+.btn svg{width:20px;height:20px;flex:none}
+.btn:focus-visible{outline:3px solid var(--ouro);outline-offset:2px}
+
+details.instalar{margin-top:10px;border:1px solid var(--line);border-radius:14px}
+details.instalar summary{list-style:none;cursor:pointer;padding:13px 16px;font-weight:600;font-size:15.5px;display:flex;justify-content:space-between;align-items:center}
+details.instalar summary::-webkit-details-marker{display:none}
+details.instalar summary::after{content:"+";font-size:22px;line-height:1;color:var(--muted)}
+details.instalar[open] summary::after{content:"−"}
+.passos{padding:0 16px 14px;font-size:15px}
+.passos p{margin:0 0 8px}
+.passos b{color:var(--cor)}
+
+.partilhar{background:var(--suave);border-radius:20px;padding:20px;margin-top:24px;text-align:center}
+.partilhar h2{font-family:var(--display);font-weight:600;font-size:21px;margin:0 0 4px}
+.partilhar p{margin:0 0 14px;color:var(--muted);font-size:15px}
+.acoes{display:grid;gap:10px}
+.btn.zap{background:#1F8F4E;border-color:#1F8F4E;color:#fff}
+#copiado{min-height:1.4em;margin:8px 0 0;font-size:14px;color:var(--muted)}
+
+footer{text-align:center;margin-top:30px;color:var(--muted);font-size:14px}
+footer .verso{font-family:var(--display);font-style:italic;font-size:17px;color:var(--ink);margin:0}
+footer .ref{margin:2px 0 12px}
+@media (min-width:560px){ h1{font-size:36px} .acoes{grid-template-columns:1fr 1fr} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <svg class="cruz" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M24 6v36M13 17h22"/></svg>
+    <div class="eyebrow">Apps católicos</div>
+    <h1>Para servir e para explicar a fé</h1>
+    <p class="lede">Dois aplicativos feitos com carinho para a Igreja. Abra pelo celular, instale na tela inicial e use à vontade.</p>
+    <ul class="selos" aria-label="Como funcionam">
+      <li>Gratuitos</li><li>Sem cadastro</li><li>Sem anúncios</li><li>Funcionam sem internet</li>
+    </ul>
+  </header>
+
+  <main>
+    <section class="app praesto" aria-labelledby="t-praesto">
+      <div class="topo">
+        <img src="praesto-sum.png" alt="" width="64" height="64">
+        <div><h2 id="t-praesto">Praesto Sum</h2><p class="para">Para acólitos, coroinhas e quem prepara a Santa Missa</p></div>
+      </div>
+      <ul>
+        <li>O dia litúrgico de hoje: cor, Glória, Creio e o santo do dia</li>
+        <li>As páginas do Missal para marcar as fitas, na ordem da Missa</li>
+        <li>Lista para preparar o altar e a credência</li>
+        <li>A procissão de entrada montada com a sua equipe</li>
+        <li>A Instrução Geral do Missal Romano (IGMR), número por número</li>
+      </ul>
+      <a class="btn pri" href="https://gd-root.github.io/praesto-summ/">Abrir o Praesto Sum
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+      <details class="instalar">
+        <summary>Como instalar no celular</summary>
+        <div class="passos">
+          <p><b>iPhone:</b> abra o link no Safari, toque em Compartilhar e depois em “Adicionar à Tela de Início”.</p>
+          <p><b>Android:</b> abra o link no Chrome, toque no menu (três pontinhos) e depois em “Instalar app”.</p>
+          <p>Abra uma vez com internet. Depois ele funciona até sem sinal, na sacristia.</p>
+        </div>
+      </details>
+    </section>
+
+    <section class="app veritas" aria-labelledby="t-veritas">
+      <div class="topo">
+        <img src="veritas.png" alt="" width="64" height="64">
+        <div><h2 id="t-veritas">Veritas in Caritate</h2><p class="para">A verdade na caridade: apologética católica</p></div>
+      </div>
+      <ul>
+        <li>Respostas às dúvidas e objeções mais comuns sobre a fé</li>
+        <li>Para cada uma: a Bíblia, o Catecismo e os primeiros cristãos</li>
+        <li>Maria, a Igreja, os sacramentos, os santos e as cinco solas</li>
+        <li>Dicas para conversar com respeito, mesmo com quem discorda</li>
+      </ul>
+      <a class="btn pri" href="https://gd-root.github.io/Veritas-in-Caritate/">Abrir o Veritas in Caritate
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+      <details class="instalar">
+        <summary>Como instalar no celular</summary>
+        <div class="passos">
+          <p><b>iPhone:</b> abra o link no Safari, toque em Compartilhar e depois em “Adicionar à Tela de Início”.</p>
+          <p><b>Android:</b> abra o link no Chrome, toque no menu (três pontinhos) e depois em “Instalar app”.</p>
+          <p>Abra uma vez com internet. Depois ele funciona até sem sinal.</p>
+        </div>
+      </details>
+    </section>
+  </main>
+
+  <section class="partilhar" aria-labelledby="t-partilhar">
+    <h2 id="t-partilhar">Conhece alguém que vai gostar?</h2>
+    <p>Mande para a sua equipe de liturgia, o grupo de oração ou a catequese.</p>
+    <div class="acoes">
+      <a class="btn zap" id="zap" href="https://wa.me/?text=Apps%20cat%C3%B3licos%20gratuitos%3A%20Praesto%20Sum%20(para%20quem%20serve%20ao%20altar)%20e%20Veritas%20in%20Caritate%20(para%20explicar%20a%20f%C3%A9).%20https%3A%2F%2Fgd-root.github.io%2F" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.2-.2-.5-.3z"/></svg>
+        Enviar pelo WhatsApp</a>
+      <button type="button" class="btn" id="copiar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+        Copiar o link</button>
+    </div>
+    <p id="copiado" role="status" aria-live="polite"></p>
+  </section>
+
+  <footer>
+    <p class="verso">“Servi ao Senhor com alegria.”</p>
+    <p class="ref">Salmo 100(99),2</p>
+    <p>Feito por GD para a maior glória de Deus.</p>
+  </footer>
+</div>
+
+<script>
+  /* Copiar o link; no celular, usa o menu de compartilhar do próprio aparelho quando houver */
+  var LINK = "https://gd-root.github.io/";
+  var aviso = document.getElementById("copiado");
+  document.getElementById("copiar").addEventListener("click", function () {
+    function ok() { aviso.textContent = "Link copiado. É só colar na conversa."; }
+    function falha() { aviso.textContent = "Não deu para copiar. O link é " + LINK; }
+    try { navigator.clipboard.writeText(LINK).then(ok, falha); } catch (e) { falha(); }
+  });
+</script>
+</body>
+</html>
