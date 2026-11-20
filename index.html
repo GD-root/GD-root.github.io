@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Apps católicos gratuitos · GD</title>
 <meta name="description" content="Praesto Sum, para quem serve ao altar, e Veritas in Caritate, para explicar a fé com caridade. Gratuitos, sem cadastro e funcionam sem internet.">
-<meta name="theme-color" content="#6B1F2E">
-<link rel="icon" href="praesto-sum.png" type="image/png">
+<meta name="theme-color" content="#101218">
+<link rel="icon" href="veritas.png" type="image/png">
 
 <!-- Cartão que aparece quando o link é enviado no WhatsApp, Instagram e outras redes -->
 <meta property="og:type" content="website">
@@ -21,23 +21,26 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,500;0,600;1,500&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cormorant+Garamond:ital,wght@1,500&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --paper:#F8F3EC; --card:#FFFFFF; --ink:#2A1B1C; --muted:#6E5F5C; --line:#E2D6CB;
-  --vinho:#6B1F2E; --rubrica:#A3211B; --ouro:#8A6A1F; --suave:#F3E4E2;
-  --display:"Spectral", Georgia, "Times New Roman", serif;
-  --body:"Source Sans 3", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --paper:#F5F2EC; --card:#FFFFFF; --ink:#1C1A17; --muted:#5F5A53; --line:#E8E1D6;
+  --vinho:#7A1E30; --rubrica:#A3211B; --ouro:#8A6A1C; --suave:#F4ECD9;
+  --g-praesto:linear-gradient(150deg,#c8342a,#7a1712); --g-veritas:linear-gradient(150deg,#8e2a3c,#4a0e1c);
+  --sombra:0 1px 2px #0000000f,0 10px 26px #0000000d;
+  --display:"Cinzel", Georgia, "Times New Roman", serif;
+  --italico:"Cormorant Garamond", Georgia, serif;
+  --body:"Manrope", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --paper:#17110F; --card:#221917; --ink:#F1E9E4; --muted:#B3A49D; --line:#3A2D29;
-    --vinho:#E58A97; --rubrica:#F07A6F; --ouro:#D9B45C; --suave:#33211F;
+    --paper:#101218; --card:#1B1E27; --ink:#F3EEE5; --muted:#B9B3A8; --line:#2C313C;
+    --vinho:#E58A97; --rubrica:#F07A6F; --ouro:#E6C66F; --suave:#2A2618; --sombra:0 1px 0 #ffffff08 inset;
   }
 }
 :root[data-theme="dark"]{
-  --paper:#17110F; --card:#221917; --ink:#F1E9E4; --muted:#B3A49D; --line:#3A2D29;
-  --vinho:#E58A97; --rubrica:#F07A6F; --ouro:#D9B45C; --suave:#33211F;
+  --paper:#101218; --card:#1B1E27; --ink:#F3EEE5; --muted:#B9B3A8; --line:#2C313C;
+  --vinho:#E58A97; --rubrica:#F07A6F; --ouro:#E6C66F; --suave:#2A2618; --sombra:0 1px 0 #ffffff08 inset;
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
@@ -139,6 +142,43 @@ footer .ref{margin:2px 0 12px}
 .acutis figcaption{margin-top:8px;font-size:14px;color:var(--muted)}
 .acutis figcaption b{color:var(--ouro);font-weight:700}
 @media (min-width:560px){ h1{font-size:36px} .acoes{grid-template-columns:1fr 1fr} }
+
+/* =================== Estilo solene (o mesmo dos apps) =================== */
+body{background:radial-gradient(140% 460px at 50% 0,color-mix(in srgb,#8e2a3c 14%,var(--paper)) 0,var(--paper) 70%) no-repeat,var(--paper)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) body{background:radial-gradient(140% 480px at 50% 0,color-mix(in srgb,#8e2a3c 32%,var(--paper)) 0,var(--paper) 72%) no-repeat,var(--paper)}}
+.ornato{display:flex;align-items:center;justify-content:center;gap:12px;color:var(--ouro);margin-bottom:8px}
+.ornato i{width:64px;height:1px;background:linear-gradient(90deg,transparent,var(--ouro))}.ornato i:last-child{transform:scaleX(-1)}
+.cruz{width:30px;height:30px;margin:0}
+.eyebrow{font-size:11.5px;font-weight:800;letter-spacing:.2em}
+h1{font-family:var(--display);font-size:25px;letter-spacing:.06em;line-height:1.25;color:var(--ink);text-wrap:balance}
+.selos li{font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--card) 80%,transparent)}
+.praesto{--g:var(--g-praesto)}.veritas{--g:var(--g-veritas)}
+.tile{border:1px solid var(--line);border-top:1px solid var(--line);border-radius:24px;padding:22px 10px 18px;box-shadow:var(--sombra);overflow:hidden}
+.tile:before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:var(--g)}
+.tile img{width:72px;height:72px;border-radius:18px;box-shadow:0 0 0 1px color-mix(in srgb,var(--ouro) 40%,transparent),0 6px 16px #0004}
+.tile b{font-size:15.5px;letter-spacing:.04em;line-height:1.25}
+.tile small{font-size:13px;font-weight:600}
+.tile .mais{background:color-mix(in srgb,var(--ouro) 16%,transparent);color:var(--ouro)}
+dialog.balao{border-top:0;border-radius:26px}
+dialog.balao:before{content:"";display:block;height:6px;background:var(--g,var(--ouro))}
+.opiniao{--g:linear-gradient(90deg,#c8962c,#f0cf72,#c8962c)}
+.topo img{border-radius:16px;box-shadow:0 0 0 1px color-mix(in srgb,var(--ouro) 40%,transparent),0 4px 12px #0004}
+.balao h2{font-size:19px;letter-spacing:.04em}
+.balao li::before{background:var(--ouro)}
+.btn{border-radius:16px;font-weight:800;font-size:16px}
+.btn.pri,:root[data-theme="dark"] .btn.pri{background:var(--g);border-color:transparent;color:#fff}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .btn.pri{color:#fff}}
+.opiniao .btn.pri,:root[data-theme="dark"] .opiniao .btn.pri{color:#1a1405}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .opiniao .btn.pri{color:#1a1405}}
+.passos b{color:var(--ouro)}
+details.instalar{border-radius:16px}
+.partilhar{background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:var(--sombra)}
+.partilhar h2{font-size:17px;letter-spacing:.05em;color:var(--ouro)}
+.abrir-opiniao{font-weight:700}
+.acutis blockquote,footer .verso{font-family:var(--italico);font-size:21px}
+.acutis figcaption b{font-family:var(--display);letter-spacing:.06em}
+footer .verso{color:var(--ouro)}
+@media (min-width:560px){ h1{font-size:28px} }
 </style>
 <!-- Contagem anônima de acessos (GoatCounter: sem cookies; só o dono vê os números) -->
 <script data-goatcounter="https://gdapps.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
@@ -146,7 +186,7 @@ footer .ref{margin:2px 0 12px}
 <body>
 <div class="wrap">
   <header>
-    <svg class="cruz" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M24 6v36M13 17h22"/></svg>
+    <div class="ornato" aria-hidden="true"><i></i><svg class="cruz" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M24 6v36M13 17h22"/></svg><i></i></div>
     <div class="eyebrow">Apps católicos</div>
     <h1>Para servir e para explicar a fé</h1>
     <ul class="selos" aria-label="Como funcionam">
@@ -158,12 +198,12 @@ footer .ref{margin:2px 0 12px}
     <ul class="apps" aria-label="Aplicativos">
       <li class="praesto"><button type="button" class="tile" data-abrir="b-praesto" aria-haspopup="dialog">
         <span class="mais" aria-hidden="true">+</span>
-        <img src="praesto-sum.png" alt="" width="64" height="64">
+        <img src="praesto-sum.png" alt="" width="72" height="72">
         <b>Praesto Sum</b><small>Para quem serve ao altar</small>
       </button></li>
       <li class="veritas"><button type="button" class="tile" data-abrir="b-veritas" aria-haspopup="dialog">
         <span class="mais" aria-hidden="true">+</span>
-        <img src="veritas.png" alt="" width="64" height="64">
+        <img src="veritas.png" alt="" width="72" height="72">
         <b>Veritas in Caritate</b><small>Para explicar a fé</small>
       </button></li>
     </ul>
@@ -181,6 +221,7 @@ footer .ref{margin:2px 0 12px}
         <li>As páginas do Missal para marcar as fitas, na ordem da Missa</li>
         <li>Lista para preparar o altar e a credência</li>
         <li>A procissão de entrada montada com a sua equipe</li>
+        <li>O que é cada objeto litúrgico, com desenhos</li>
         <li>A Instrução Geral do Missal Romano (IGMR), número por número</li>
       </ul>
       <a class="btn pri" href="https://gd-root.github.io/praesto-summ/">Acessar o Praesto Sum
@@ -208,7 +249,7 @@ footer .ref{margin:2px 0 12px}
         <li>Para cada uma: a Bíblia, o Catecismo e os primeiros cristãos</li>
         <li>Maria, a Igreja, os sacramentos, os santos e as cinco solas</li>
         <li>Teologia da Libertação: o que a Igreja ensina e por que rejeita a leitura marxista da fé</li>
-        <li>Dicas para conversar com respeito, mesmo com quem discorda</li>
+        <li>Salve as fichas favoritas e acompanhe as que já leu</li>
       </ul>
       <a class="btn pri" href="https://gd-root.github.io/Veritas-in-Caritate/">Acessar o Veritas in Caritate
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
